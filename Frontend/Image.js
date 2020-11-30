@@ -1,6 +1,0 @@
-
-class Image{
-    constructor(){
-        
-    }
-}
