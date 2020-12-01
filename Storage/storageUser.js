@@ -1,8 +1,5 @@
-import { postUser } from "../API/controllers/user.js"
-
-const Datastore = require('nedb');
-
-
-const database = new Datastore('usersDatabase.db');
+var Datastore = require('nedb');
+const database = new Datastore('userDatabase.db');
 database.loadDatabase();
-database.insert(postUser);
+
+database.insert({name: 'Sofie', age: 20});

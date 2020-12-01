@@ -2,7 +2,7 @@
 //possible in this way, since i use the newest form of node.js
 import express from "express";
 
-import { getInterest, postInterest, getIdInterest, deleteInterest, patchInterest } from '../controllers/interest';
+import { getInterest, postInterest, getIdInterest, deleteInterest, patchInterest } from '../controllers/interest.js';
 
 const router = express.Router();
 

@@ -3,6 +3,8 @@
 //importing the uuid so we can create id's
 import { v4 as uuidv4 } from "uuid";
 
+const interests = [];
+
 export const getInterest = (req, res) =>{
     res.send(interests); //should this even be used?
 };
@@ -40,7 +42,7 @@ export const patchInterest = (req, res) =>{
 
     const { interest } = req.body;
 
-    const interest = interests.find((interest) => interest.id == id); 
+    interest = interests.find((interest) => interest.id == id); 
 
     if (interest) user.interest = interest;
 

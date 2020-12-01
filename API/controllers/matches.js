@@ -3,6 +3,8 @@
 //importing the uuid so we can create id's
 import { v4 as uuidv4 } from "uuid";
 
+const matches = [];
+
 export const getMatch = (req, res) =>{
     res.send(matches); //should this even be used?
 };
