@@ -2,10 +2,6 @@
 
 //importing the uuid so we can create id's
 import { v4 as uuidv4 } from "uuid";
-
-// var Datastore = require('nedb')
-//   , users = new Datastore({ userDatabase: '../../Storage', autoload: true });
-
   //we want to load the data for easy access?
   //we want to send the changes back to storage
   //should the whole storage be checked? 
@@ -25,7 +21,9 @@ export const postUser = (req, res) =>{
 
     users.insert(userWithId); //should be sent to storage, how to do that?
     // res.send(userWithId);
+    
     res.send(`User with the username ${user.firstName} added to the database!`);
+
 };
 
 export const getIdUser = (req, res) =>{
@@ -59,3 +57,5 @@ export const patchUser = (req, res) =>{
 
     res.send(`User with the id ${id} has been updated`);
 };
+
+module.exports(users);
