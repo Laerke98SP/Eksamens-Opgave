@@ -1,5 +1,22 @@
-var Datastore = require('nedb');
-const database = new Datastore('userDatabase.db');
-database.loadDatabase();
+//var Datastore = require('nedb');
 
-database.insert({name: 'Sofie', age: 20});
+import nedb from "nedb";
+
+
+const databases = new nedb('userDatabase.db');
+databases.loadDatabase();
+
+// function findingUser(ids){
+//     database.find({ _id: ids }, function (err, doc) {
+//         var hej = doc[0];
+//     })
+// }
+
+
+export const findingUser = database.find({ _id: ids }, function (err, doc) {})
+
+
+
+
+
+

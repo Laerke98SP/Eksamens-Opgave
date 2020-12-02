@@ -1,2 +1,6 @@
-{"name":"Sofie","age":20,"_id":"bio7vrzLFNGE86WY"}
-{"name":"Sofie","age":20,"_id":"LO3A7cCu8AlzHXNv"}
+{"firstName":"Lasse","lastName":"Monik","age":30,"_id":"9WOEBr3rMxitkGfo"}
+{"firstName":"Henrik","lastName":"Hansen","age":60,"_id":"4GElSqfAqVV4zcEj"}
+{"firstName":"Lars","lastName":"Lindblad","age":40,"_id":"PXb6GyFyOdOSGikj"}
+{"firstName":"Anna","lastName":"Russer","age":20,"_id":"zwfAt3XZIEpI4jfe"}
+{"firstName":"Sofie","lastName":"Helboe","age":20,"_id":"S95rBkSMQnQg3IwV"}
+{"$$deleted":true,"_id":"4GElSqfAqVV4zcEj"}
