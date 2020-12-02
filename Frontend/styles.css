@@ -1,0 +1,35 @@
+/* 
+    dusty red: rgb(199, 73, 58)
+    dark red: rgb(163, 51, 39)
+    dusty green: rgb(163, 51, 39)
+    red brown: rgb(145, 113, 100)
+    light brown: rgb(173, 129, 116)
+    white: rgb(235, 232, 232)
+*/
+
+
+body{
+    background-color: black;
+}
+
+#loginBox{
+    width: 30%;
+    /* height: 400px; */
+    /* margin: -70px 0 0 -120px; */
+    margin: auto;
+    margin-top: 190px;
+    /* border-radius: 5%; */
+    text-align: center;
+    /* padding-top: 70px; */
+    color: rgb(235, 232, 232);
+}
+
+button{
+    width: 60%;
+    height: 60px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(163, 51, 39);
+    color: rgb(235, 232, 232);
+
+}
