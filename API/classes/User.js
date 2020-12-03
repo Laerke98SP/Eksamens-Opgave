@@ -1,7 +1,6 @@
 
-class User{
-    constructor(userId, firstName, lastName, email, dateOfBirth, password){
-        this.userId = userId;
+export class User{
+    constructor(firstName, lastName, email, dateOfBirth, password){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -15,5 +14,6 @@ class User{
         var age_dt = new Date(diff_ms); 
         this.age = Math.abs(age_dt.getUTCFullYear() - 1970);
     }
-}
+};
+
 

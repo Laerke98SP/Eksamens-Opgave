@@ -6,6 +6,7 @@
 //should the whole storage be checked? 
 
 import nedb from "nedb";
+import { User } from "../classes/User.js"
 
 // var db = {};
 const db = new nedb('../Storage/userDatabase.db');
@@ -15,7 +16,6 @@ const db = new nedb('../Storage/userDatabase.db');
 
 db.loadDatabase();
 
-var users = []
 
 export const getUser = (req, res) =>{
     db.find({}, function (err, docs) {
@@ -27,12 +27,16 @@ export const getUser = (req, res) =>{
 export const postUser = (req, res) =>{
     const user = req.body;
 
+    var newUser = new User()
     // const userWithId = { ...user, id: uuidv4()};  
     //not nessesary since it makes id's itself
 
-    db.insert(user);
-    res.send('User has been added to the database');
+    for (const [key, value] of Object.entries(user)) {
+        newUser[key] = value;
+    };
 
+    db.insert(newUser);
+    res.send('User has been added to the database');
 };
 
 export const getIdUser = (req, res) =>{
@@ -56,7 +60,7 @@ export const deleteUser = (req, res) =>{
 export const patchUser = (req, res) =>{
     //should this be in storage?
     const { id } = req.params;
-    const { firstName, lastName, age } = req.body;
+    const { firstName, lastName, dob } = req.body;
 
 
     if (firstName){
@@ -65,8 +69,8 @@ export const patchUser = (req, res) =>{
     if (lastName){
         db.update({ _id: id }, { $set: { lastName: lastName}}, function (err, numReplaced) {});
     }
-    if (age){
-        db.update({ _id: id }, { $set: { age: age}}, function (err, numReplaced) {});
+    if (dob){
+        db.update({ _id: id }, { $set: { dateOfBirth: dob}}, function (err, numReplaced) {});
     }
     res.send('User has been updated');
 };
