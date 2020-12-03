@@ -1,15 +1,29 @@
 /* 
     dusty red: rgb(199, 73, 58)
     dark red: rgb(163, 51, 39)
-    dusty green: rgb(163, 51, 39)
+    dusty green: rgb(104, 151, 117)
     red brown: rgb(145, 113, 100)
     light brown: rgb(173, 129, 116)
     white: rgb(235, 232, 232)
 */
 
+button:hover{
+    background-color: rgb(104, 151, 117);
+}
 
 body{
     background-color: black;
+}
+
+h1{
+    color: rgba(235, 232, 232, 0.918);
+    float: left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
 }
 
 #loginBox{
@@ -31,5 +45,64 @@ button{
     border-radius: 4px;
     background-color: rgb(163, 51, 39);
     color: rgb(235, 232, 232);
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
+}
+
+form{
+    color: rgb(235, 232, 232);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 2px 0;
+    box-sizing: border-box;
+    /* border: 2px solid rgba(235, 232, 232, 0.534); */
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(235, 232, 232, 0.651);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+
+}
+
+#formDiv, #loginDiv{
+    width: 30%;
+    text-align: center;
+    /* background-color: violet; */
+    margin: auto;
+}
+
+#loginDiv{
+    margin-top: 100px;
+}
+
+
+#dob{
+    width: 100%;
+    background-color: none;
+    float: right;
+}
+
+
+#image{
+    background-color: black;
+    width: 100%;
+    float: left;
+    margin-left: 0%;
+    background-color: black;
+    padding-left: 0%;
+}
+
+#dobText, #imageText{
+    float: left;
+    margin-bottom: 0%;
+    color: rgba(235, 232, 232, 0.637);
+}
+
+#submitButton, #loginButton{
+    margin-top: 10px;
+    width: 100%;
 }

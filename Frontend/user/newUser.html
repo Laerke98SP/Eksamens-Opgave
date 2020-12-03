@@ -2,32 +2,37 @@
 <html>
     <head>
         <title>Ny bruger</title>
+        <link rel="stylesheet" href="../styles.css">
     </head>
     <body>
-        <h1>Opret profil</h1>
-        <form onsubmit="return newUser()">
-            <input type="text" id="firstName" placeholder="Fornavn" />
-            <br>
-            <input type="text" id="lastName" placeholder="Efternavn"/>
-            <br>
-            <input type="email" id="email" placeholder="Email"/>
-            <br>
-            <input type="password" id="password" placeholder="Adgangskode"/>
-            <br>
-            <p>Fødselsdag</p>
-            <input type="date" id="dob" placeholder="Fødselsdag"/>
-            <br>
-            <p>Upload profilbillede</p>
-            <input type="file" id="image">
-            <br>
-            <textarea name="interest" id="interest" cols="50" rows="2" placeholder="Hvad er dine interesser?"></textarea>
-            <br>
-            <textarea name="aboutUser" id="aboutUser" cols="50" rows="10" placeholder="Skriv lidt om dig selv"></textarea>
-            <br>
-            <button type="submit" style="cursor: pointer;">Opret profil</button>
-        </form>
+        <div id="formDiv">
+            <h1>Opret profil</h1>
+            <form onsubmit="newUser()">
+                <input type="text" id="firstName" placeholder="Fornavn" />
+                <br>
+                <input type="text" id="lastName" placeholder="Efternavn"/>
+                <br>
+                <input type="email" id="email" placeholder="Email"/>
+                <br>
+                <input type="password" id="password" placeholder="Adgangskode"/>
+                <br>
+                <p id="dobText">Fødselsdag</p>
+                <input type="date" id="dob" placeholder="Fødselsdag"/>
+                <br>
+                <p id="imageText">Upload profilbillede</p>
+                <input type="file" id="image">
+                <br>
+                <textarea name="interest" id="interest" cols="50" rows="1" placeholder="Hvad er dine interesser?"></textarea>
+                <br>
+                <textarea name="aboutUser" id="aboutUser" cols="50" rows="4" placeholder="Skriv lidt om dig selv"></textarea>
+                <br>
+                <button type="submit" style="cursor: pointer;" id="submitButton" >Opret profil</button>
+            </form>
+        </div>
+        
         <!-- <script type="module" type="application/javascript" src="manageUser.js"></script> -->
         <script src="manageUser.js"></script>
+        <!-- HUSK DET SKAL KØRES I CHROME!!! -->
 
     </body>
 
