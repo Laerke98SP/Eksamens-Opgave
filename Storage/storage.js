@@ -28,28 +28,34 @@ const user = {
 //     console.log("JSON data is saved.");
 // })
 
-fs.readFile('user.json', 'utf-8', (err, data) => {
-    if (err) {
-        throw err;
-    }
-
-    var user = []
-    user.push(JSON.parse(data.toString()));
-
-
-
-    
-    const data = JSON.stringify(user);
-
-    fs.writeFile('user.json', data, (err) => {
+function tester(){
+    return fs.readFile('user.json', 'utf-8', (err, data) => {
         if (err) {
             throw err;
         }
-        console.log("JSON data is saved.");
+    
+        var user = []
+        user.push(JSON.parse(data.toString()));
+        // return user;
     })
+}
 
 
-});
+console.log(tester())
+
+
+
+//     const data = JSON.stringify(user);
+
+//     fs.writeFile('user.json', data, (err) => {
+//         if (err) {
+//             throw err;
+//         }
+//         console.log("JSON data is saved.");
+//     })
+
+
+// });
 
 
 

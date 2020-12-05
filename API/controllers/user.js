@@ -1,5 +1,7 @@
-import { insertingUser, gettingUser, findingIdUser, findingEmailUser, deletingUser, patchingUser } from "../../Storage/userData.js"
-import fs from 'fs';
+import { insertingUser, deletingUser, patchingUser } from "../../Storage/userData.js"
+// import { insertingUser, gettingUser, findingIdUser, findingEmailUser, deletingUser, patchingUser } from "../../Storage/userData.js"
+
+// import fs from 'fs';
 import nedb from "nedb"
 
 const db = new nedb('../Storage/userDatabase.db');
@@ -14,9 +16,16 @@ db.loadDatabase();
 export const getUser = (req, res) =>{
     // console.log(gettingUser())
     // res.send("something happened");
+    // db.find({}, function (err, docs) {
+    //     res.json(docs);
+    // })
+    // console.log(gettingUser(res))
+
     db.find({}, function (err, docs) {
-        res.json(docs);
+        res.json(docs);           
     });
+
+
 };
 
 export const postUser = (req, res) =>{
@@ -27,31 +36,43 @@ export const postUser = (req, res) =>{
     //     res.send(text);
     // });
 
-    // res.send('User has been added to the database');
+    res.send('User has been added to the database');
 };
 
-export const getIdUser = (req, res) =>{
-    const { id } = req.params;
-    findingIdUser(id);
-    res.send('User has been found');
-};
+// export const getIdUser = (req, res) =>{
+//     const { email } = req.params;
+
+//     db.find({ email: email }, function (err, doc) {
+//         res.json(doc);
+//     });
+
+//     // findingIdUser(id);
+//     // res.send('User has been found');
+// };
 
 export const getEmailUser = (req, res) =>{
     const { email } = req.params;
-    findingEmailUser(email);
-    res.send('User has been found');
+
+    db.find({ email: email }, function (err, doc) {
+        //få den til at handle direkte med frontend
+        res.json(doc);
+    });
+
+    // findingEmailUser(email);
+    // res.send('User has been found');
 };
 
 export const deleteUser = (req, res) =>{
-    const { id } = req.params;
-    deletingUser(id);
+    const { email } = req.params;
+
+    deletingUser( email );
     res.send(`User has been deleted`);
 };
 
 export const patchUser = (req, res) =>{
-    const { id } = req.params;
+    const { email } = req.params;
     const { firstName, lastName, dateOfBirth } = req.body;
-    patchingUser(id, firstName, lastName, dateOfBirth);
+    patchingUser(email, firstName, lastName, dateOfBirth);
     res.send('User has been updated');
 };
 

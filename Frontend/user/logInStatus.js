@@ -1,14 +1,18 @@
 // Sætter "item, til at være værdien af input fra useren og bruger dem senere"
 
-function rememberMe(){
-    localStorage.setItem('email', usernameInput.value);
-    localStorage.setItem('password', passCodeInput.value);
+export function rememberMe(email, password){
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+
+    // // window.location.href = "userPage.html";
+    // window.location.href = "userPage.html";
 }
 
 
-function forgetMe(){
+export function forgetMe(){
     localStorage.removeItem('email');
     localStorage.removeItem('password');
+    window.location.href = "../index.html";
 }
 
 
