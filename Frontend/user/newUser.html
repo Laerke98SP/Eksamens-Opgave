@@ -7,7 +7,7 @@
     <body>
         <div id="formDiv">
             <h1>Opret profil</h1>
-            <form onsubmit="newUser()">
+            <form>
                 <input type="text" id="firstName" placeholder="Fornavn" />
                 <br>
                 <input type="text" id="lastName" placeholder="Efternavn"/>
@@ -26,14 +26,15 @@
                 <br>
                 <textarea name="aboutUser" id="aboutUser" cols="50" rows="4" placeholder="Skriv lidt om dig selv"></textarea>
                 <br>
-                <button type="submit" style="cursor: pointer;" id="submitButton" >Opret profil</button>
+                <a href="userPage.html"><button type="button" style="cursor: pointer;" id="submitButton" onclick="newUser()" >Opret profil</button></a>
             </form>
         </div>
         
+<!--  -->
+
         <!-- <script type="module" type="application/javascript" src="manageUser.js"></script> -->
         <script src="manageUser.js"></script>
         <!-- HUSK DET SKAL KØRES I CHROME!!! -->
 
     </body>
-
 </html>

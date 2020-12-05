@@ -25,16 +25,24 @@ var person = new User("Gustav", "Frelsen");
 
 
 //how to find a specific person with an attribute
-database.find({ _id: "KcMIyJvrIXrkyw0V" }, function (err, doc) {
-    //how to access the specific attributes
-    // console.log(doc[0].firstName);
+var test = 0
+export const hej = database.find({ _id: "KcMIyJvrIXrkyw0V" }, function (err, doc) {
+        //how to access the specific attributes
+        // console.log(doc[0].firstName);
+    res.send(doc)
 });
+    
+
+console.log(test);
 
 
 
-database.find({}, function (err, docs) {
-    console.log(docs)
-});
+// console.log(test)
+
+
+// database.find({}, function (err, docs) {
+//     console.log(docs)
+// });
 
 
 

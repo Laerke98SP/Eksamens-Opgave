@@ -1,10 +1,3 @@
-// import User from "../classes/User.js";
-// var User = require('../classes/User.js');
-
-// function cleanInterest(interest){
-//     var 
-// }
-
 
 function newUser(){
     var firstName = document.getElementById("firstName").value;
@@ -21,20 +14,29 @@ function newUser(){
     // const user = new User (firstName, lastName, email, dateOfBirth, password);
     const user = {firstName, lastName, email, dateOfBirth, password};
 
-
     const options = {
+        // url: "user.html",
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(user),
+        // redirect: 'follow'
+        
         // body: JSON.stringify
     };
+    
+    // // "user/newUser.html"
+    fetch('http://localhost:5000/user', options)
+    // .then(res => res.json()) // expecting a json response
+    // .then(json => {
+    //    console.log(json)
+    //    window.location.href = "userPage.html";
+    //   });
+    
+    // redirection()
 
-    // "user/newUser.html"
-    fetch('http://localhost:5000/user', options);
+    // window.location.replace("user.html");    
 
     // https://www.youtube.com/watch?v=tc8DU14qX6I
 };
-
-
