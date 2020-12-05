@@ -1,5 +1,9 @@
-import { insertingUser, gettingUser, findingIdUser, deletingUser, patchingUser } from "../../Storage/userData.js"
+import { insertingUser, gettingUser, findingIdUser, findingEmailUser, deletingUser, patchingUser } from "../../Storage/userData.js"
 import fs from 'fs';
+import nedb from "nedb"
+
+const db = new nedb('../Storage/userDatabase.db');
+db.loadDatabase();
 
 // export const getHomePage = (req, res) => {  // Hver gang denne path med http verb bliver kaldt, så vil vi starte en fubnktion med 2 parametrer, req & res
 //         fs.readFile(__dirname + '/client/Login.html', 'utf8', function(err, text){
@@ -8,8 +12,11 @@ import fs from 'fs';
 
 
 export const getUser = (req, res) =>{
-    console.log(gettingUser())
-    res.send("something happened");
+    // console.log(gettingUser())
+    // res.send("something happened");
+    db.find({}, function (err, docs) {
+        res.json(docs);
+    });
 };
 
 export const postUser = (req, res) =>{
@@ -20,15 +27,18 @@ export const postUser = (req, res) =>{
     //     res.send(text);
     // });
 
-    return res.redirect('/page')
-
-
     // res.send('User has been added to the database');
 };
 
 export const getIdUser = (req, res) =>{
     const { id } = req.params;
     findingIdUser(id);
+    res.send('User has been found');
+};
+
+export const getEmailUser = (req, res) =>{
+    const { email } = req.params;
+    findingEmailUser(email);
     res.send('User has been found');
 };
 

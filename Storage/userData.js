@@ -1,4 +1,5 @@
 import nedb from "nedb";
+import express from 'express';
 import { User } from "./classes/User.js"
 
 const db = new nedb('../Storage/userDatabase.db');
@@ -7,8 +8,17 @@ db.loadDatabase();
 export function gettingUser(){
     db.find({}, function (err, docs) {
         //skal kontakte frontend direkte og vise det der skal vises
+        
     });
 }
+
+// export const gettingUser = (req, res) =>{
+//     db.find({}, function (err, docs) {
+//         return res.json(docs);
+//     });
+// };
+
+
 
 export function insertingUser(user){
     var newUser = new User()
@@ -21,6 +31,15 @@ export function insertingUser(user){
 export function findingIdUser(id){
     return db.find({ _id: id }, function (err, doc) {
         //få den til at handle direkte med frontend
+    });
+}
+
+
+
+export function findingEmailUser(email){
+    return db.find({ email: email }, function (err, doc) {
+        //få den til at handle direkte med frontend
+        console.log(doc);
     });
 }
 

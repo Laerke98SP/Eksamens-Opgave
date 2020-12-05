@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import fs from 'fs';
+// import fs from 'fs';
 
 import userRoutes from './routes/user.js';
 // import userCreation from './routes/createUser.js';

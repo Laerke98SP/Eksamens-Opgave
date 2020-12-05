@@ -1,39 +1,94 @@
-// const Datastore = require('nedb');
-import nedb from "nedb";
+// // const Datastore = require('nedb');
+// import nedb from "nedb";
+// // import { User } from "./classes/User";
 
 
 
 
-const database = new nedb('database.db');
-database.loadDatabase();
+// const database = new nedb('database.db');
+// database.loadDatabase();
 
+import fs from 'fs'
 
+// create a JSON object
+const user = {
+    "id": 1,
+    "name": "John Doe",
+    "age": 22
+};
 
-class User{
-    constructor(firstName, lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
+// convert JSON object to string
+// const data = JSON.stringify(user);
+
+// write JSON string to a file
+// fs.writeFile('user.json', data, (err) => {
+//     if (err) {
+//         throw err;
+//     }
+//     console.log("JSON data is saved.");
+// })
+
+fs.readFile('user.json', 'utf-8', (err, data) => {
+    if (err) {
+        throw err;
     }
-}
+
+    // parse JSON object
+    const user = JSON.parse(data.toString());
+    user.id = 25
+    // print JSON object
+    console.log(user);
+});
 
 
 
 
-var person = new User("Gustav", "Frelsen");
+
+
+
+
+
+
+
+
+// class User{
+//     constructor(firstName, lastName){
+//         this.firstName = firstName;
+//         this.lastName = lastName;
+//     }
+// }
+
+
+// function findingEmailUser(firstName){
+//     database.find({ firstName: firstName }, function (err, doc) {
+//         var hello = doc.firstName
+//         // console.log(doc)
+//         console.log(hello)
+//     });   
+// }
+
+// findingEmailUser("Louise")
+
+
+
+
+
+
+// var person = new User("Gustav", "Frelsen");
 
 //database.insert(person);
 
 
 //how to find a specific person with an attribute
-var test = 0
-export const hej = database.find({ _id: "KcMIyJvrIXrkyw0V" }, function (err, doc) {
-        //how to access the specific attributes
-        // console.log(doc[0].firstName);
-    res.send(doc)
-});
+// var test = 0
+// export const hej = database.find({ _id: "KcMIyJvrIXrkyw0V" }, function (err, doc) {
+//         //how to access the specific attributes
+//         // console.log(doc[0].firstName);
+//     // res.send(doc)
+// });
     
 
-console.log(test);
+// console.log(test);
 
 
 
