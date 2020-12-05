@@ -29,8 +29,8 @@ export function insertingUser(user){
 }
 
 export function findingIdUser(id){
-    return db.find({ _id: id }, function (err, doc) {
-        //få den til at handle direkte med frontend
+    db.find({ _id: id }, function (err, doc) {
+        return doc 
     });
 }
 
