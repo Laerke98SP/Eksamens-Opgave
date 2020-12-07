@@ -6,10 +6,21 @@ const db = new nedb('../Storage/database.db');
 db.loadDatabase();
 
 
-db.insert([{ a: 5 }, { a: 42 }, { a: 5 }], function (err) {
+var lst = [1, 3, 7, 6, 9];
+console.log(lst);
+
+const index = lst.indexOf(3);
+if (index > -1) {
+  lst.splice(index, 1);
+}
+
+console.log(lst)
+
+
+// db.insert([{ a: 5 }, { a: 42 }, { a: 5 }], function (err) {
     // err is a 'uniqueViolated' error
     // The database was not modified
-  });
+  // });
 
 // {"firstName":"Louise","lastName":"Markussen","_id":"e8zNJSVvNavg2qaY"}
 

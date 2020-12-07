@@ -6,6 +6,8 @@ import userRoutes from './routes/user.js';
 // import userCreation from './routes/createUser.js';
 import userMatches from './routes/matches.js';
 import userInterest from './routes/inserest.js';
+import userVisits from './routes/visits.js';
+
 
 const app = express();
 const PORT = 5000;
@@ -17,6 +19,7 @@ app.use('/user', userRoutes);
 // app.use('/createUser', userCreation);
 app.use('/match', userMatches);
 app.use('/interest', userInterest);
+app.use('/visits', userVisits);
 
 app.get('/', (req, res) => {res.send('Hello from homepage')});
 

@@ -14,7 +14,7 @@ function correctLogin(){
             window.location.href = "userPage.html";
             rememberMe(loginEmail, loginPassword);
         }
-    })
+    });
 }
 
 function rememberMe(email, password){

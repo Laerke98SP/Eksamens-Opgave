@@ -69,6 +69,7 @@ export const getEmailUser = (req, res) =>{
 
 export const deleteUser = (req, res) =>{
     const { email } = req.params;
+    const editedUser = req.body;
 
     deletingUser( email );
     res.send(`User has been deleted`);
