@@ -1,7 +1,6 @@
 
-class Match{
-    constructor(matchId, userOneId, userTwoId){
-        this.matchId = matchId;
+export class Match{
+    constructor(userOneId, userTwoId){
         this.userOneId = userOneId;
         this.userTwoId = userTwoId;
     }

@@ -2,7 +2,7 @@ import nedb from "nedb";
 // import express from 'express';
 import { userVisits } from "./classes/UserVisits.js"
 
-const db = new nedb({ filename: '../Storage/userVisited.db', autoload: true});
+const db = new nedb({ filename: '../Storage/visitData.db', autoload: true});
 db.loadDatabase();
 
 export function insertingUservisit(newUserVisits){

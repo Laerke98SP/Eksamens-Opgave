@@ -10,6 +10,7 @@ function newUser(){
     var about = document.getElementById("about").value;
 
     rememberMe(email, password);
+    userVisits(email)
 
     // var year, month, day = dateOfBirth.split("-");
     
@@ -34,6 +35,23 @@ function newUser(){
 
     fetch('http://localhost:5000/user', options);
 };
+
+
+function userVisits(email){
+    var visits = { email, visits: []}
+
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(visits)
+    };
+    
+
+    fetch('http://localhost:5000/visits', options);
+}
 
 
 function rememberMe(email, password){

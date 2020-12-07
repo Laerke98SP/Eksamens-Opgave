@@ -1,6 +1,6 @@
 export class userVisits{
-    constructor(email, visited){
+    constructor(email, visits){
         this.email = email;
-        this.visited = visited;
+        this.visits = visits;
     }
 }

@@ -3,6 +3,7 @@ import { insertingUser, deletingUser, patchingUser } from "../../Storage/userDat
 
 // import fs from 'fs';
 import nedb from "nedb"
+var db = new nedb({ filename: '../Storage/userDatabase.db', autoload: true});
 
 // var db = new nedb({ filename: '../Storage/userDatabase.db', autoload: true});
 // db.loadDatabase();
@@ -15,8 +16,7 @@ import nedb from "nedb"
 
 export const getUser = (req, res) =>{
     //databasen bliver loaded hver gang, ellers bruger den ikke den opdaterede version 
-    var db = new nedb({ filename: '../Storage/userDatabase.db', autoload: true});
-
+    db.loadDatabase()
     // console.log(gettingUser())
     // res.send("something happened");
     // db.find({}, function (err, docs) {
@@ -54,7 +54,7 @@ export const postUser = (req, res) =>{
 // };
 
 export const getEmailUser = (req, res) =>{
-    var db = new nedb({ filename: '../Storage/userDatabase.db', autoload: true});
+    db.loadDatabase()
 
     const { email } = req.params;
 
@@ -69,7 +69,6 @@ export const getEmailUser = (req, res) =>{
 
 export const deleteUser = (req, res) =>{
     const { email } = req.params;
-    const editedUser = req.body;
 
     deletingUser( email );
     res.send(`User has been deleted`);

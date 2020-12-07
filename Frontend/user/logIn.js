@@ -11,8 +11,11 @@ function correctLogin(){
         // alert(data[0])
         // alert(JSON.stringify(data[0].email))
         if (data[0].email == email && data[0].password == loginPassword){
+            rememberMe(email, loginPassword);
             window.location.href = "userPage.html";
-            rememberMe(loginEmail, loginPassword);
+        } else {
+            alert("Forkert email eller kodeord")
+            throw console.error("forkert email eller kodeord");
         }
     });
 }

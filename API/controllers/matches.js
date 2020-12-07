@@ -1,52 +1,55 @@
 //all actions related to a user
+import { insertingMatch, deletingMatch } from "../../Storage/matchesData.js"
+import nedb from "nedb"
+
+// const db = new nedb({ filename: '../Storage/matchesDatabase.db', autoload: true});
+
 
 //importing the uuid so we can create id's
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
-const matches = [];
+// const matches = [];
 
 export const getMatch = (req, res) =>{
-    res.send(matches); //should this even be used?
+    // db.loadDatabase()
+    const db = new nedb({ filename: '../Storage/matchesDatabase.db', autoload: true});
+
+
+    db.find({}, function (err, docs) {
+        res.json(docs);           
+    });
 };
 
 export const postMatch = (req, res) =>{
-    const match = req.body;
-
-    const matchWithId = { ...match, id: uuidv4()};  
-
-    matches.push(matchWithId); //should be sent to storage
-
-    res.send(`Match with the id ${match.id} has been added to the database!`);
+    const newMatch = req.body;
+    insertingMatch(newMatch);
+    // db.insert(userVisits);
+    res.send("Match has been created");
 };
 
-export const getIdMatch = (req, res) =>{
-    const { id } = req.params;
+export const getEmailMatch = (req, res) =>{
+    // db.loadDatabase()
+    const db = new nedb({ filename: '../Storage/matchesDatabase.db', autoload: true});
 
-    const foundMatch = matches.find((match) => match.id == id) // shold storage be called to do this?
 
-    res.send(foundMatch);
+    const { email } = req.params;
+
+    db.find({ email: email }, function (err, doc) {
+        //få den til at handle direkte med frontend
+        res.json(doc);
+    });
 };
 
 export const deleteMatch = (req, res) =>{
     const { id } = req.params;
 
-    matches = matches.filter((match) => match.id != id);
-
-    res.send(`Match with the id ${id} deleted from the database.`);
+    deletingMatch( id );
+    res.send(`User has been deleted`);
 };
 
 
 export const patchMatch = (req, res) =>{
     //should this be in storage?
-    //is this relevant for a match?
-    const { id } = req.params;
-
-    const { userOneId, userTwoId } = req.body;
-
-    const match = matches.find((match) => match.id == id); 
-
-    if (userOneId) user.userOneId = userOneId;
-    if (userTwoId) user.userTwoId = userTwoId;
-
-    res.send(`Match with the id ${id} has been updated`);
+    //is this relevant for a match
+    res.send(`Match with the has been updated`);
 };
