@@ -12,17 +12,17 @@ fetch(`http://localhost:5000/user`).then((resp) => resp.json()).then(function(da
         for (i in data){
             // alert(visits[0].visits.includes(data[i].email))
             // alert(visits[0].visits)
-            if (data[0].email == email){
-                i++
+            if (data[i].email == email){
+                continue;
             } else if (visits[0].visits.includes(data[i].email) == false) {
-                var fullName = data[0].firstName + " " + data[0].lastName;
-                var dob = data[0].dateOfBirth;
+                var fullName = data[i].firstName + " " + data[i].lastName;
+                var dob = data[i].dateOfBirth;
                 var age = calculateAge(dob);
                 document.getElementById('userFullName').innerHTML = fullName;
                 document.getElementById('age').innerHTML = age + " år";
-                document.getElementById('email').innerHTML = data[0].email;
+                document.getElementById('email').innerHTML = data[i].email;
                 document.getElementById('interest').innerHTML = "interest";
-                document.getElementById('about').innerHTML = data[0].about;
+                document.getElementById('about').innerHTML = data[i].about;
 
 
             } 
@@ -42,14 +42,16 @@ function calculateAge(dob){
 }
 
 function yes(){
-    var email = localStorage.getItem("email");
-    var matchUser = document.getElementById("email").value;
+    var userOneId = localStorage.getItem("email");
+    // var matchUser = document.getElementById("email").value;
+    var userTwoId = "hello";
+
 
     // alert(matchUser)
 
-    const newMatch = { email, matchUser }
+    const newMatch = { userOneId, userTwoId }
 
-    addVisit(email, matchUser);
+    addVisit(userOneId, userTwoId);
 
     const options = {
         method: 'POST',
