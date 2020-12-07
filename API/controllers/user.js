@@ -4,8 +4,8 @@ import { insertingUser, deletingUser, patchingUser } from "../../Storage/userDat
 // import fs from 'fs';
 import nedb from "nedb"
 
-const db = new nedb('../Storage/userDatabase.db');
-db.loadDatabase();
+// var db = new nedb({ filename: '../Storage/userDatabase.db', autoload: true});
+// db.loadDatabase();
 
 // export const getHomePage = (req, res) => {  // Hver gang denne path med http verb bliver kaldt, så vil vi starte en fubnktion med 2 parametrer, req & res
 //         fs.readFile(__dirname + '/client/Login.html', 'utf8', function(err, text){
@@ -14,6 +14,9 @@ db.loadDatabase();
 
 
 export const getUser = (req, res) =>{
+    //databasen bliver loaded hver gang, ellers bruger den ikke den opdaterede version 
+    var db = new nedb({ filename: '../Storage/userDatabase.db', autoload: true});
+
     // console.log(gettingUser())
     // res.send("something happened");
     // db.find({}, function (err, docs) {
@@ -51,6 +54,8 @@ export const postUser = (req, res) =>{
 // };
 
 export const getEmailUser = (req, res) =>{
+    var db = new nedb({ filename: '../Storage/userDatabase.db', autoload: true});
+
     const { email } = req.params;
 
     db.find({ email: email }, function (err, doc) {
@@ -71,8 +76,10 @@ export const deleteUser = (req, res) =>{
 
 export const patchUser = (req, res) =>{
     const { email } = req.params;
-    const { firstName, lastName, dateOfBirth } = req.body;
-    patchingUser(email, firstName, lastName, dateOfBirth);
+    const editedUser = req.body;
+
+    patchingUser( email, editedUser );
+
     res.send('User has been updated');
 };
 

@@ -1,34 +1,39 @@
 
-var loginEmail = localStorage.getItem("email");
-alert(loginEmail)
+var email = localStorage.getItem("email");
+// alert(loginEmail)
 
-fetch(`http://localhost:5000/user/${loginEmail}`).then((resp) => resp.json()).then(function(data) {    
+fetch(`http://localhost:5000/user/${email}`).then((resp) => resp.json()).then(function(data) {    
     var fullName = data[0].firstName + " " + data[0].lastName;
-    var psw = data[0].password;
+    //dateOfBirth change to age
     var dob = data[0].dateOfBirth;
-    var em = data[0].email;
-    var ab = data[0].about;
+    // alert(dob)
+    var age = calculateAge(dob);
 
-    alert(data)
-
-
-
-        // var age = calculateAge(data[0].dateOfBirth)
-
-    // alert(data[0].password)
-
+    
     document.getElementById('userFullName').innerHTML = fullName;
-    document.getElementById('age').innerHTML = dob;
-    document.getElementById('email').innerHTML = em;
+    document.getElementById('age').innerHTML = age + " år";
+    document.getElementById('email').innerHTML = data[0].email;
     document.getElementById('interest').innerHTML = "interest";
-    document.getElementById('about').innerHTML = ab;
+    document.getElementById('about').innerHTML = data[0].about;
 })
 
 
 
 function calculateAge(dob){
     //calculateAge is a function, since you would need their age to be accurate and not static
-    var diff_ms = Date.now() - new Date(dob);
+    // var ymd = str.split("-");
+    // var year = ymd[0];
+    // var month = ymd[1];
+    // var day = ymd[2];
+
+    let [y, m, d] = dob.split("-");
+    let year = Number(y)
+    let month = Number(m)
+    let day = Number(d)
+
+    // alert(new Date(dob))
+
+    var diff_ms = Date.now() - new Date(year, month, day);
     var age_dt = new Date(diff_ms); 
     return age = Math.abs(age_dt.getUTCFullYear() - 1970);
 }

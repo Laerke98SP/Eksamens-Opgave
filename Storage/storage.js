@@ -1,21 +1,29 @@
 // // const Datastore = require('nedb');
-// import nedb from "nedb";
+import nedb from "nedb";
 // // import { User } from "./classes/User";
 
+const db = new nedb('../Storage/database.db');
+db.loadDatabase();
 
 
+db.insert([{ a: 5 }, { a: 42 }, { a: 5 }], function (err) {
+    // err is a 'uniqueViolated' error
+    // The database was not modified
+  });
+
+// {"firstName":"Louise","lastName":"Markussen","_id":"e8zNJSVvNavg2qaY"}
 
 // const database = new nedb('database.db');
 // database.loadDatabase();
 
-import fs from 'fs'
+// import fs from 'fs'
 
-// create a JSON object
-const user = {
-    "id": 2,
-    "name": "Heiji",
-    "age": 22
-};
+// // create a JSON object
+// const user = {
+//     "id": 2,
+//     "name": "Heiji",
+//     "age": 22
+// };
 
 // // convert JSON object to string
 // const data = JSON.stringify(user);
@@ -28,20 +36,20 @@ const user = {
 //     console.log("JSON data is saved.");
 // })
 
-function tester(){
-    return fs.readFile('user.json', 'utf-8', (err, data) => {
-        if (err) {
-            throw err;
-        }
+// function tester(){
+//     return fs.readFile('user.json', 'utf-8', (err, data) => {
+//         if (err) {
+//             throw err;
+//         }
     
-        var user = []
-        user.push(JSON.parse(data.toString()));
-        // return user;
-    })
-}
+//         var user = []
+//         user.push(JSON.parse(data.toString()));
+//         // return user;
+//     })
+// }
 
 
-console.log(tester())
+// console.log(tester())
 
 
 

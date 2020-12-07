@@ -2,12 +2,15 @@
 
 
 function correctLogin(){
-    var loginEmail = document.getElementById("email").value;
+    var email = document.getElementById("email").value;
     var loginPassword = document.getElementById("password").value;
 
-    fetch(`http://localhost:5000/user/${loginEmail}`).then((resp) => resp.json()).then(function(data) {
+    
+
+    fetch(`http://localhost:5000/user/${email}`).then((resp) => resp.json()).then(function(data) {
+        // alert(data[0])
         // alert(JSON.stringify(data[0].email))
-        if (data[0].email == loginEmail && data[0].password == loginPassword){
+        if (data[0].email == email && data[0].password == loginPassword){
             window.location.href = "userPage.html";
             rememberMe(loginEmail, loginPassword);
         }

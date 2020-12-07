@@ -9,7 +9,7 @@ router.get("/", getUser);
 router.post("/", postUser);
 // router.get("/:id", getIdUser);
 router.get("/:email", getEmailUser);
-router.delete("/:id", deleteUser);
-router.patch("/:id", patchUser);
+router.delete("/:email", deleteUser);
+router.patch("/:email", patchUser);
 
 export default router;

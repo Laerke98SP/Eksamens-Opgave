@@ -2,8 +2,8 @@ import nedb from "nedb";
 // import express from 'express';
 import { User } from "./classes/User.js"
 
-const db = new nedb('../Storage/userDatabase.db');
-db.loadDatabase();
+const db = new nedb({ filename: '../Storage/userDatabase.db', autoload: true});
+// db.loadDatabase();
 
 // export function gettingUser().then(function(err, data) {
 //     res.json(data);
@@ -53,12 +53,32 @@ export function insertingUser(user){
 //     });
 // }
 
-export function deletingUser(email){ db.remove({ email: email }, {}, function (err, emailRemoved) { console.log("User have been deleted")});}
+export function deletingUser(email){ 
+    db.remove({ email: email }, {}, function (err, emailRemoved) { 
+        db.persistence.compactDatafile();
+    })
+;}
 
-export function patchingUser(email, firstName, lastName, dateOfBirth){
-    if (firstName){ db.update({ emai: email }, { $set: { firstName: firstName}}, function (err, numReplaced) {}); }
-    if (lastName){ db.update({ emai: email }, { $set: { lastName: lastName}}, function (err, numReplaced) {}); }
-    if (dateOfBirth){ db.update({ emai: email }, { $set: { dateOfBirth: dateOfBirth}}, function (err, numReplaced) {}); }
+
+export function patchingUser( email,  editedUser ){
+    db.remove({ email: email }, {}, function (err, emailRemoved) {
+        db.persistence.compactDatafile();
+    });
+
+    var newUser = new User()
+
+    for (const [key, value] of Object.entries(editedUser)) {
+        newUser[key] = value;
+    };
+
+    // newUser.calculateAge()
+
+    db.insert(newUser);
+    db.loadDatabase();
+
+    // db.update({ email: email }, { $set: { firstName: firstName, lastName: lastName, dateOfBirth: dateOfBirth, about: about}}, { multi: true }, function (err, numReplaced) {});
+
+
 }
 
 
