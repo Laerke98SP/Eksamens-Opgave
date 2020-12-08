@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ny bruger</title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div id="formDiv">
+            <h1>Opret profil</h1>
+            <form>
+                <input type="text" id="firstName" placeholder="Fornavn" />
+                <br>
+                <input type="text" id="lastName" placeholder="Efternavn"/>
+                <br>
+                <input type="email" id="email" placeholder="Email"/>
+                <br>
+                <input type="password" id="password" placeholder="Adgangskode"/>
+                <br>
+                <p id="dobText">Fødselsdag</p>
+                <input type="date" id="dateOfBirth" placeholder="Fødselsdag"/>   
+                <br>
+                <textarea id="about" cols="50" rows="4" placeholder="Skriv lidt om dig selv"></textarea>
+                <br>
+                <a href="../matches/matching.html"><button type="button" style="cursor: pointer;" id="submitButton" onclick="newUser()" >Opret profil</button></a>
+
+            </form>
+        </div>
+        
+<!--  -->
+
+        <!-- <script type="module" type="application/javascript" src="manageUser.js"></script> -->
+        <script src="manageUser.js"></script>
+        <!-- HUSK DET SKAL KØRES I CHROME!!! -->
+
+    </body>
+</html>

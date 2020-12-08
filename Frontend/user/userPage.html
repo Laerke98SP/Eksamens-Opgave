@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Bruger</title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div id="header">
+            <table id="menuLine">
+                <tr>
+                    <td><a href="../matches/matching.html"><button id="home" style="cursor: pointer;"><h4>Home</h4></button></a></td>
+                    <td><a href="../matches/matches.html"><button id="matches" style="cursor: pointer;"><h4>Matches</h4></button></a></td>
+                    <td><button id="user" style="cursor: pointer;"><h4>Bruger</h4></button></td>
+                    <td><button id="logOut" style="cursor: pointer;" onclick="logOut()"><h4>Log ud</h4></button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="collectedUser">
+                <h2 id="userFullName"></h2>
+                <h4 id="age"></h4>
+                <h4 id="email"></h4>
+                <h4 id="interest"></h4>
+                <h4 id="about"></h4>
+            <a href="editUser.html"><button style="cursor: pointer;" id="editProfile">Rediger profil</button></a>
+        </div>
+        
+        <script src="userPage.js"></script>
+        <script src="logOut.js"></script>
+
+    </body>
+</html>

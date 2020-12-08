@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Rediger bruger</title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div id="formDiv">
+            <h1>Rediger bruger</h1>
+            <form id="editUserForm">
+                <input type="text" id="firstName" >
+                <br>
+                <input type="text" id="lastName" >
+                <br>
+                <p id="dobText">Fødselsdag</p>
+                <input type="date" id="dateOfBirth" placeholder="Fødselsdag">
+                <br>
+                <textarea id="about" cols="50" rows="4"></textarea>
+                <br>
+                <!-- <button type="button" style="cursor: pointer;" id="submitButton" onclick="newUser()" >Opret profil</button> -->
+                <a href="userPage.html"><button type="button" style="cursor: pointer;" id="editButton" onclick="editUser()">Rediger bruger</button></a>
+                <a href="deleteUser.html"><button type="button" style="cursor: pointer;" id="sendToDeleteUser" >Slet bruger</button></a>
+            </form>
+        <script src="./editUserInfo.js"></script>
+        <script src="./editUser.js"></script>
+        <!-- <script src="./deleteUser.js"></script> -->
+    </body>
+</html>
