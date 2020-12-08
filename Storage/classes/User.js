@@ -7,7 +7,6 @@ export class User{
         this.dateOfBirth = dateOfBirth;
         this.password = password;
         this.about = about;
-        this.interest = interest
     };
 };
 
