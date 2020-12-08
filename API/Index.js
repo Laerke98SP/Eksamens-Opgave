@@ -3,9 +3,7 @@ import bodyParser from 'body-parser';
 // import fs from 'fs';
 
 import userRoutes from './routes/user.js';
-// import userCreation from './routes/createUser.js';
 import userMatches from './routes/matches.js';
-import userInterest from './routes/inserest.js';
 import userVisits from './routes/visits.js';
 import userPotentials from './routes/potentials.js'
 
@@ -17,9 +15,7 @@ app.use(express.static('../Frontend'));
 app.use(bodyParser.json());
 
 app.use('/user', userRoutes);
-// app.use('/createUser', userCreation);
 app.use('/match', userMatches);
-app.use('/interest', userInterest);
 app.use('/visits', userVisits);
 app.use('/potentials', userPotentials);
 

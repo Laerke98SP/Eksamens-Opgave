@@ -16,7 +16,6 @@ function fetchMatch(){
         document.getElementById('userFullName').innerHTML = fullName;
         document.getElementById('age').innerHTML = age + " år";
         document.getElementById('email').innerHTML = potential.email;
-        document.getElementById('interest').innerHTML = "interest";
         document.getElementById('about').innerHTML = potential.about;
 
         console.log("UI updated");
@@ -103,6 +102,38 @@ function addVisit(email, matchUser){
     });
 
     console.log("ready to fetch match")
-
-
 };
+
+function no(){
+    
+    var email = localStorage.getItem("email");
+    var matchUser = localStorage.getItem("current");
+
+        // alert (matchUser)
+    console.log("adding visit")
+
+    fetch(`http://localhost:5000/visits/${email}`).then((resp) => resp.json()).then(function(visiting){
+        var visits = visiting[0].visits;
+        visits.push(matchUser);
+        // visits.push();
+    
+        console.log(visits);
+        var newVisit =  { email, visits };
+        var options = {
+            method: 'PATCH',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(newVisit),
+        };
+        
+        fetch(`http://localhost:5000/visits/${email}`, options).then(function () {
+            setTimeout(function(){
+                fetchMatch();
+            }, 500); //delay so visits actually gets updated
+            
+        });
+    
+    
+    });    
+}

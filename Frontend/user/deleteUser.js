@@ -1,10 +1,6 @@
 
 function deleteUser(){
     var email = localStorage.getItem("email");
-
-    // alert(email)
-
-    // const editedUser = { firstName, lastName, email, dateOfBirth, password, about };
     const options = { 
         method: 'DELETE', 
         headers: { 

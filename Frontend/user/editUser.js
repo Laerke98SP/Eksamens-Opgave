@@ -6,8 +6,6 @@ function editUser(){
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
     var dateOfBirth = document.getElementById("dateOfBirth").value;
-    var image = document.getElementById("image").value;
-    var interest = document.getElementById("interest").value;
     var about = document.getElementById("about").value;
 
     const editedUser = { firstName, lastName, email, dateOfBirth, password, about };

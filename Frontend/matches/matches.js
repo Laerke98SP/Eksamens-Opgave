@@ -15,17 +15,11 @@ function gettingMatches(){
                     var fullName = user[j].firstName + " " + user[j].lastName;
 
                     matches(fullName, age, id)
-                }
-
+                };
             });
-
-        }
-
-
+        };
     });
-
-
-}
+};
 
 function calculateAge(dob){
     let [y, m, d] = dob.split("-");
@@ -42,24 +36,21 @@ function calculateAge(dob){
 function matches(name, age, id){
     console.log("got information to post: " + name)
     const holder = document.createElement('div');
-    const matchImg = document.createElement('img');
     const matchName = document.createElement('h2');
     const matchAge = document.createElement('h4');
     const deleteMatch = document.createElement('button');
 
     const nameTxt = document.createTextNode(name);
     const ageTxt = document.createTextNode(age);
-    const buttonTxt = document.createTextNode('Slet bruger');
+    const buttonTxt = document.createTextNode('Slet match');
 
     holder.id = 'matchHolder';
-    matchImg.id = 'matchImage';
     matchName.id = 'matchName';
     matchAge.id = 'matchAge';
     deleteMatch.id = 'deleteMatch';
 
     deleteMatch.className = id;
 
-    // deleteMatch.onclick = deletingMatch(this);
     deleteMatch.onclick = function() {
         var id = deleteMatch.className
 
@@ -85,14 +76,9 @@ function matches(name, age, id){
     deleteMatch.appendChild(buttonTxt);
 
 
-    holder.appendChild(matchImg);
     holder.appendChild(matchName);
     holder.appendChild(matchAge);
     holder.appendChild(deleteMatch);
 
     document.body.appendChild(holder);
-
-    // console.log("added element")
-
-    // gettingMatches()
-}
+};

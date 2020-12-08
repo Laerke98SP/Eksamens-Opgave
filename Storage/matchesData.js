@@ -8,38 +8,13 @@ db.loadDatabase();
 
 export function insertingMatch(match){
     var newMatch = new Match( match.userOneId, match.userTwoId)
-
     db.insert(newMatch);
 }
 
 export function deletingMatch(id){ 
-    db.remove({ _id: id }, {}, function (err, emailRemoved) {
-        // db.persistence.compactDatafile();
-    });
+    db.remove({ _id: id }, {}, function (err, emailRemoved) { });
 ;}
 
-
-
-// ---------Do i need patch here?-------------//
-export function patchingUser( email,  editedUser ){
-    db.remove({ email: email }, {}, function (err, emailRemoved) {
-        // db.persistence.compactDatafile();
-    });
-
-    var newUser = new User()
-
-    for (const [key, value] of Object.entries(editedUser)) {
-        newUser[key] = value;
-    };
-
-    // newUser.calculateAge()
-
-    db.insert(newUser);
-
-    // db.update({ email: email }, { $set: { firstName: firstName, lastName: lastName, dateOfBirth: dateOfBirth, about: about}}, { multi: true }, function (err, numReplaced) {});
-
-
-}
 
 
 

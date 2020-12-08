@@ -12,25 +12,21 @@
                     <td><button id="home" style="cursor: pointer;"><h4>Home</h4></button></td>
                     <td><a href="./matches.html"><button id="matches" style="cursor: pointer;"><h4>Matches</h4></button></a></td>
                     <td><a href="../user/userPage.html"><button id="user" style="cursor: pointer;"><h4>Bruger</h4></button></a></td>
-                    <td><a href="../index.html"><button id="logOut" style="cursor: pointer;" ><h4>Log ud</h4></button></a></td>
+                    <td><button id="logOut" style="cursor: pointer;" onclick="logOut()" ><h4>Log ud</h4></button></td>
                 </tr>
             </table>
         </div>
-        <div>
-            <div id="userImagePlacement">
-                <img src="" id="userImage">
-            </div>
-            <div id="userInformation">
-                <h2 id="userFullName"></h2>
-                <h4 id="age"></h4>
-                <h4 id="email"></h4>
-                <h4 id="interest"></h4>
-                <h4 id="about"></h4>
-            </div>
+        <div id="userInformationHome">
+            <h2 id="userFullName"></h2>
+            <h4 id="age"></h4>
+            <h4 id="email"></h4>
+            <h4 id="about"></h4>
             <button id="yesPlease" style="cursor: pointer;" onclick="yes();">Ja tak</button>
-            <button id="noThankYou" style="cursor: pointer;">Måske ikke</button>
+            <button id="noThankYou" style="cursor: pointer;" onclick="no()">Måske ikke</button>
         </div>
         <script src="matching.js"></script>
+        <script src="../user/logOut.js"></script>
+
         <!-- <script src="yes.js"></script> -->
 
     </body>

@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.get("/", getUser);
 router.post("/", postUser);
-// router.get("/:id", getIdUser);
 router.get("/:email", getEmailUser);
 router.delete("/:email", deleteUser);
 router.patch("/:email", patchUser);
