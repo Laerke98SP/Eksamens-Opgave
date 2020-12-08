@@ -20,9 +20,9 @@ export const getUserVisits = (req, res) =>{
 
 export const postUserVisits = (req, res) =>{
     // var db = new nedb({ filename: '../Storage/userVisited.db', autoload: true});
-
+    const email = req.params;
     const userVisits = req.body;
-    insertingUservisit(userVisits);
+    insertingUservisit(email, userVisits);
     // db.insert(userVisits);
     res.send(userVisits);
 };
@@ -48,7 +48,7 @@ export const deleteUserVisits = (req, res) =>{
 export const patchVisits = (req, res) =>{
     const { email } = req.params;
     const newVisit = req.body;
-    patchingVisits( email, newVisit );
-    res.send('User has been updated');
+    patchingVisits( email, newVisit ); 
+    res.send("result");
 };
 

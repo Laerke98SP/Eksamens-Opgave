@@ -7,6 +7,7 @@ import userRoutes from './routes/user.js';
 import userMatches from './routes/matches.js';
 import userInterest from './routes/inserest.js';
 import userVisits from './routes/visits.js';
+import userPotentials from './routes/potentials.js'
 
 
 const app = express();
@@ -20,6 +21,7 @@ app.use('/user', userRoutes);
 app.use('/match', userMatches);
 app.use('/interest', userInterest);
 app.use('/visits', userVisits);
+app.use('/potentials', userPotentials);
 
 app.get('/', (req, res) => {res.send('Hello from homepage')});
 

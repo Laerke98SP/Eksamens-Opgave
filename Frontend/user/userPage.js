@@ -9,7 +9,6 @@ fetch(`http://localhost:5000/user/${email}`).then((resp) => resp.json()).then(fu
     // alert(dob)
     var age = calculateAge(dob);
 
-    
     document.getElementById('userFullName').innerHTML = fullName;
     document.getElementById('age').innerHTML = age + " år";
     document.getElementById('email').innerHTML = data[0].email;

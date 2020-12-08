@@ -1,34 +1,27 @@
 
-var email = localStorage.getItem("email");
+function fetchMatch(){
+    console.log("fetching match");
+    var email = localStorage.getItem("email");
 
-fetch(`http://localhost:5000/user`).then((resp) => resp.json()).then(function(data) {
+    fetch(`http://localhost:5000/potentials/${email}`).then((resp) => resp.json()).then(function(potential){
 
-    // alert(data[1].email)
+        // alert(potential.email)
 
-    // var i = 0;
+        localStorage.setItem("current", potential.email);
+        console.log("match found: " + potential.email);
 
-    fetch(`http://localhost:5000/visits/${email}`).then((resp) => resp.json()).then(function(visits){
-        // var i = 0
-        for (i in data){
-            // alert(visits[0].visits.includes(data[i].email))
-            // alert(visits[0].visits)
-            if (data[i].email == email){
-                continue;
-            } else if (visits[0].visits.includes(data[i].email) == false) {
-                var fullName = data[i].firstName + " " + data[i].lastName;
-                var dob = data[i].dateOfBirth;
-                var age = calculateAge(dob);
-                document.getElementById('userFullName').innerHTML = fullName;
-                document.getElementById('age').innerHTML = age + " år";
-                document.getElementById('email').innerHTML = data[i].email;
-                document.getElementById('interest').innerHTML = "interest";
-                document.getElementById('about').innerHTML = data[i].about;
+        var fullName = potential.firstName + " " + potential.lastName;
+        var dob = potential.dateOfBirth;
+        var age = calculateAge(dob);
+        document.getElementById('userFullName').innerHTML = fullName;
+        document.getElementById('age').innerHTML = age + " år";
+        document.getElementById('email').innerHTML = potential.email;
+        document.getElementById('interest').innerHTML = "interest";
+        document.getElementById('about').innerHTML = potential.about;
 
-
-            } 
-        }
-    });  
-});
+        console.log("UI updated");
+    });
+};
 
 function calculateAge(dob){
     let [y, m, d] = dob.split("-");
@@ -42,18 +35,27 @@ function calculateAge(dob){
 }
 
 function yes(){
+    console.log("yes was pressed")
+
+
     var userOneId = localStorage.getItem("email");
-    // var matchUser = document.getElementById("email").value;
-    var userTwoId = "hello";
+    var userTwoId = localStorage.getItem("current");
+    // var userTwoId = "hello";
+
+    console.log("userOneId: " + userOneId)
+    console.log("userTwoId: " + userTwoId)
+
 
 
     // alert(matchUser)
 
-    const newMatch = { userOneId, userTwoId }
+    var newMatch = { userOneId, userTwoId };
 
     addVisit(userOneId, userTwoId);
 
-    const options = {
+    console.log("visit saved")
+
+    var options = {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -63,28 +65,44 @@ function yes(){
 
     fetch('http://localhost:5000/match', options);
 
-    // location.reload();
+    console.log("match saved")
+
+    return false;
 }
 
 
 
 function addVisit(email, matchUser){
-    alert (matchUser)
+    // alert (matchUser)
+    console.log("adding visit")
 
     fetch(`http://localhost:5000/visits/${email}`).then((resp) => resp.json()).then(function(visiting){
         var visits = visiting[0].visits;
-        visits.push(matchUser)
+        visits.push(matchUser);
         // visits.push();
 
-        const newVisit = { email, visits };
-        const options = {
+        console.log(visits);
+
+        var newVisit =  { email, visits };
+        var options = {
             method: 'PATCH',
             headers: {
                 "Content-type": "application/json"
             },
             body: JSON.stringify(newVisit),
-        }
+        };
     
-        fetch(`http://localhost:5000/visits/${email}`, options)
-    })
+        fetch(`http://localhost:5000/visits/${email}`, options).then(function () {
+            setTimeout(function(){
+                fetchMatch();
+            }, 500); //delay so visits actually gets updated
+            
+        });
+
+
+    });
+
+    console.log("ready to fetch match")
+
+
 };

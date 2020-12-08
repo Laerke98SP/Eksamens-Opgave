@@ -16,7 +16,7 @@ export const getMatch = (req, res) =>{
 
 
     db.find({}, function (err, docs) {
-        res.json(docs);           
+        res.send(docs);           
     });
 };
 
@@ -34,7 +34,7 @@ export const getEmailMatch = (req, res) =>{
 
     const { email } = req.params;
 
-    db.find({ email: email }, function (err, doc) {
+    db.find({ userOneId: email }, function (err, doc) {
         //få den til at handle direkte med frontend
         res.json(doc);
     });

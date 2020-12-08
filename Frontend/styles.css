@@ -8,15 +8,15 @@
 */
 
 button:hover{
-    background-color: rgb(104, 151, 117);
+    background-color: rgb(241, 60, 31);
 }
 
 body{
-    background-color: black;
+    background-color: rgb(241, 240, 235);
 }
 
 h1, h2, h4{
-    color: rgba(235, 232, 232, 0.918);
+    color: rgba(0, 0, 0, 0.87);
     /* float: left; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -36,7 +36,7 @@ p{
     /* border-radius: 5%; */
     text-align: center;
     /* padding-top: 70px; */
-    color: rgb(235, 232, 232);
+    color: rgba(0, 0, 0, 0.11);
 }
 
 button{
@@ -44,7 +44,7 @@ button{
     height: 60px;
     border: none;
     border-radius: 4px;
-    background-color: rgb(163, 51, 39);
+    background-color: rgb(64, 86, 161);
     color: rgb(235, 232, 232);
     font-size: 18px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -52,7 +52,7 @@ button{
 }
 
 form{
-    color: rgb(235, 232, 232);
+    color: rgba(0, 0, 0, 0.11);
 }
 
 input, textarea {
@@ -63,7 +63,7 @@ input, textarea {
     /* border: 2px solid rgba(235, 232, 232, 0.534); */
     border: none;
     border-radius: 4px;
-    background-color: rgba(235, 232, 232, 0.651);
+    background-color: rgba(0, 0, 0, 0.11);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 13px;
 
@@ -71,7 +71,7 @@ input, textarea {
 
 #header{
     margin-top: 0px;
-    background-color: rgb(163, 51, 39);
+    background-color: rgb(64, 86, 161);
     width: 100%;
     height: 70px;
     /* padding-top: 2px; */
@@ -109,18 +109,18 @@ input, textarea {
 
 
 #image{
-    background-color: black;
+    background-color: rgb(235, 232, 232);
     width: 100%;
     float: left;
     margin-left: 0%;
-    background-color: black;
+    /* background-color: rgb(235, 232, 232); */
     padding-left: 0%;
 }
 
 #dobText, #imageText{
     float: left;
     margin-bottom: 0%;
-    color: rgba(235, 232, 232, 0.637);
+    color: rgb(235, 232, 232);
 }
 
 #submitButton, #loginButton{
@@ -175,4 +175,13 @@ input, textarea {
     height: 65px;
     margin: auto;
     width: 170px;
+}
+
+#matchHolder{
+    width: 60%;
+    margin: auto;
+}
+
+#deleteMatch{
+    width: 100%;
 }

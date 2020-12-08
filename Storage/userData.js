@@ -25,13 +25,12 @@ db.loadDatabase();
 
 
 export function insertingUser(user){
-    var newUser = new User()
+    { firstName, lastName, email, dateOfBirth, password, about }
 
-    for (const [key, value] of Object.entries(user)) {
-        newUser[key] = value;
-    };
 
-    // newUser.calculateAge()
+    var newUser = new User(user.firstName, user.lastName, user.email, user.dateOfBirth, user.password, user.about)
+
+    newUser.calculateAge()
 
     db.insert(newUser);
 }
@@ -66,15 +65,9 @@ export function patchingUser( email,  editedUser ){
         // db.persistence.compactDatafile();
     });
 
-    var newUser = new User()
+    var newEditUser = new User(editedUser.firstName, editedUser.lastName, editedUser.email, editedUser.dateOfBirth, editedUser.password, editedUser.about)
 
-    for (const [key, value] of Object.entries(editedUser)) {
-        newUser[key] = value;
-    };
-
-    // newUser.calculateAge()
-
-    db.insert(newUser);
+    db.insert(newEditUser);
 
     // db.update({ email: email }, { $set: { firstName: firstName, lastName: lastName, dateOfBirth: dateOfBirth, about: about}}, { multi: true }, function (err, numReplaced) {});
 

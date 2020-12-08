@@ -7,13 +7,7 @@ db.loadDatabase();
 
 
 export function insertingMatch(match){
-    var newMatch = new Match()
-
-    for (const [key, value] of Object.entries(match)) {
-        newMatch[key] = value;
-    };
-
-    // newUser.calculateAge()
+    var newMatch = new Match( match.userOneId, match.userTwoId)
 
     db.insert(newMatch);
 }

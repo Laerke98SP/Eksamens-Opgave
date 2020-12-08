@@ -1,3 +1,5 @@
+
+
 function logOut(){
     localStorage.removeItem('email');
     localStorage.removeItem('password');
