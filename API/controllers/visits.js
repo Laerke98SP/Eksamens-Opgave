@@ -9,7 +9,11 @@ export const getUserVisits = (req, res) =>{
 
     // Sending every users visitdata
     db.find({}, function (err, docs) {
-        res.json(docs);           
+        if (err){
+            res.send("Could not find user visits");
+        } else {
+            res.json(docs);
+        };           
     });
 };
 
@@ -33,9 +37,12 @@ export const getEmailVisits = (req, res) =>{
 
     // Finding the specific users visits
     db.find({ email: email }, function (err, doc) {
-        res.json(doc);
+        if (err){
+            res.send("Could not get users visits with email");
+        } else {
+            res.json(doc);
+        };
     });
-
 };
 
 // ------- Patch request for specific user visit -------

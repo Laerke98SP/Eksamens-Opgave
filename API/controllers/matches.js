@@ -9,7 +9,11 @@ export const getMatch = (req, res) =>{
     // Loading the database here so it is up to date when user needs it
     const db = new nedb({ filename: '../Storage/matchesDatabase.db', autoload: true});
     db.find({}, function (err, docs) {
-        res.send(docs);           
+        if (err){
+            res.json("Could not find all matches");
+        } else {
+            res.send(docs);
+        };
     });
 };
 
@@ -21,7 +25,7 @@ export const postMatch = (req, res) =>{
     
     // Using the function from storage to insert the data
     insertingMatch(newMatch);
-    res.send("Match has been created");
+    res.json("Match has been created");
 };
 
 
@@ -35,7 +39,11 @@ export const getEmailMatch = (req, res) =>{
 
     // Finding the specific match with the email
     db.find({ userOneId: email }, function (err, doc) {
-        res.json(doc);
+        if (doc == []){
+            res.json("Could not find matches including email")
+        } else {
+            res.json(doc);
+        };
     });
 };
 
@@ -47,5 +55,5 @@ export const deleteMatch = (req, res) =>{
 
     // Using the delete function from storage to handle the delete
     deletingMatch( id );
-    res.send(`User has been deleted`);
+    res.json(`Match has been deleted`);
 };

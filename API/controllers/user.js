@@ -12,7 +12,11 @@ export const getUser = (req, res) =>{
 
     // Finding every user and sending them
     db.find({}, function (err, docs) {
-        res.json(docs);           
+        if (err){
+            res.send("Could not find users");
+        } else {
+            res.json(docs);
+        };         
     });
 };
 
@@ -36,7 +40,11 @@ export const getEmailUser = (req, res) =>{
 
     // Finding the specific user, with the email
     db.find({ email: email }, function (err, doc) {
-        res.json(doc);
+        if (err){
+            res.send("Could not find user with email");
+        } else {
+            res.json(doc);
+        };
     });
 };
 
@@ -47,7 +55,7 @@ export const deleteUser = (req, res) =>{
 
     // Using the delete function from storage 
     deletingUser( email );
-    res.send(`User has been deleted`);
+    res.json(`User has been deleted`);
 };
 
 // ------ Patch request for specific user -------
