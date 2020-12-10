@@ -24,11 +24,11 @@ export function insertingUservisit(newUserVisits){
 export function patchingVisits( email, newVisits ){
     // Deleting previous user visit data, so no duplicates
     db.remove({ email: email }, {}, function (err, emailRemoved) {
-        db.persistence.compactDatafile();
+        // db.persistence.compactDatafile();
     });
 
-    var email = newUserVisits.email
-    var visits = newUserVisits.visits
+    var email = newVisits.email
+    var visits = newVisits.visits
 
     // Creating a userVisit class
     var newUserVisit = new UserVisits(email, visits)

@@ -94,7 +94,7 @@ function addVisit(email, matchUser){
             // Delay so visits actually gets updated
             setTimeout(function(){
                 fetchMatch();
-            }, 500); 
+            }, 1000); 
         });
     });
 };
