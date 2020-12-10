@@ -1,4 +1,4 @@
-
+// Class Match
 export class Match{
     constructor(userOneId, userTwoId){
         this.userOneId = userOneId;
