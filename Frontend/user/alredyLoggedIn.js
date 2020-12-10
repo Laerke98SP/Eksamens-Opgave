@@ -1,15 +1,13 @@
 
 function alreadyLoggedIn(){
+    // Getting the email from local storage
     var email = localStorage.getItem("email");
-    var password = localStorage.getItem("password")
 
-
-    if (email == null){
-        continue
-    } else {
-        document.getElementById('email').defaultValue = email;
-        document.getElementById('password').defaultValue = password;
-    }
+    // Checking if there exist an email 
+    if (email != null){
+        // If an email exist, redirect to matcing
+        window.location.href = "../matches/matching.html";
+    } 
 }
 
 

@@ -1,31 +1,40 @@
+// Importing nedb to handle database and importing the class userVisits from classes folder
 import nedb from "nedb";
-import { userVisits } from "./classes/UserVisits.js"
+import { UserVisits } from "./classes/UserVisits.js"
 
+// Loading the database
 const db = new nedb({ filename: '../Storage/visitData.db', autoload: true});
 db.loadDatabase();
 
+
+// ------ Inserting a users visits --------
 export function insertingUservisit(newUserVisits){
     var email = newUserVisits.email
     var visits = newUserVisits.visits
-    var newUserVisit = new userVisits(email, visits)
+
+    // Creating a userVisit class
+    var newUserVisit = new UserVisits(email, visits)
+
+    // Inserting the user visit in database
     db.insert(newUserVisit);
 }
 
 
+// ------- Patch function for userVisits -------
 export function patchingVisits( email, newVisits ){
+    // Deleting previous user visit data, so no duplicates
     db.remove({ email: email }, {}, function (err, emailRemoved) {
         db.persistence.compactDatafile();
     });
 
-    var newUserVisit = new userVisits()
+    var email = newUserVisits.email
+    var visits = newUserVisits.visits
 
-    for (const [key, value] of Object.entries(newVisits)) {
-        newUserVisit[key] = value;
-    };
+    // Creating a userVisit class
+    var newUserVisit = new UserVisits(email, visits)
 
-    db.insert(newUserVisit, function(){
-        return true;
-    });
+    // Inserting the user visit in database
+    db.insert(newUserVisit);
 }
 
 

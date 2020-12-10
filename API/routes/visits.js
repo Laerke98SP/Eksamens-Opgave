@@ -1,14 +1,19 @@
-//importing libraries
-//possible in this way, since i use the newest form of node.js
+// Importing express to use server calls
 import express from "express";
+
+// Importing the functions from controllers
 import { getUserVisits, postUserVisits, getEmailVisits, patchVisits } from '../controllers/visits.js';
 
+// Declaring a router
 const router = express.Router();
 
+// Some CRUD requests
 router.get("/", getUserVisits);
 router.post("/", postUserVisits);
+
+// Email used as parameter and identifier 
 router.get("/:email", getEmailVisits);
-// router.delete("/:email", deleteUserVisits);
 router.patch("/:email", patchVisits);
 
+// Exporting the router 
 export default router;

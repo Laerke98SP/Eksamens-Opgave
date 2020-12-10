@@ -1,4 +1,4 @@
-
+// Class User
 export class User{
     constructor( firstName, lastName, email, dateOfBirth, password, about, interest ){
         this.firstName = firstName;
@@ -7,7 +7,6 @@ export class User{
         this.dateOfBirth = dateOfBirth;
         this.password = password;
         this.about = about;
-        this.interest = interest
     };
 };
 
